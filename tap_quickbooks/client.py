@@ -133,7 +133,7 @@ class QuickbooksClient():
             'client_secret': config['client_secret']
         }
 
-        LOGGER.info(f'init refresh_token: {token['refresh_token']}')
+        LOGGER.info(f"init refresh_token: {token['refresh_token']}")
 
         self.sandbox = False
         if config.get('sandbox') in ['true', 'True', True]:
@@ -186,8 +186,8 @@ class QuickbooksClient():
         with open(self.config_path) as file:
             config = json.load(file)
 
-        LOGGER.info(f'new refresh_token: {token['refresh_token']}')
-        LOGGER.info(f'access_token: {token['refresh_token']}')
+        LOGGER.info(f"new refresh_token: {token['refresh_token']}")
+        LOGGER.info(f"access_token: {token['refresh_token']}")
 
         config['refresh_token'] = token['refresh_token']
         config['access_token'] = token['access_token']
