@@ -17,8 +17,14 @@ def main():
     config = args.config
     if args.dev:
         LOGGER.warning("Executing Tap in Dev mode")
-    client = QuickbooksClient(args.config_path, config, args.dev)
+
     state = args.state
+
+    if state and 'latest_refresh_token' in state:
+        config.update({'refresh_token': state['latest_refresh_token']})
+        LOGGER.info('Loading latest_refresh_token from state to config')
+
+    client = QuickbooksClient(args.config_path, config, args.dev)
 
     if args.properties and not args.catalog:
         raise Exception("DEPRECATED: Use of the 'properties' parameter is not supported. Please use --catalog instead")

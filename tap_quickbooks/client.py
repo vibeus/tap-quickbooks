@@ -139,6 +139,8 @@ class QuickbooksClient():
         if config.get('sandbox') in ['true', 'True', True]:
             self.sandbox = True
 
+        self.latest_refresh_token = None
+
         self.user_agent = config['user_agent']
         self.realm_id = config['realm_id']
         self.config_path = config_path
@@ -188,6 +190,8 @@ class QuickbooksClient():
 
         LOGGER.info(f"new refresh_token: {token['refresh_token']}")
         LOGGER.info(f"access_token: {token['refresh_token']}")
+
+        self.latest_refresh_token = token['refresh_token']
 
         config['refresh_token'] = token['refresh_token']
         config['access_token'] = token['access_token']

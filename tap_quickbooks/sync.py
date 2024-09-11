@@ -37,4 +37,5 @@ def do_sync(client, config, state, catalog):
                                           metadata.to_map(stream.metadata)))
 
     state = singer.set_currently_syncing(state, None)
+    state['latest_refresh_token'] = client.latest_refresh_token
     singer.write_state(state)
