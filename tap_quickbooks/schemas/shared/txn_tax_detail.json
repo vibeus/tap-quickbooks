@@ -48,6 +48,9 @@
         "type": ["null", "object"]
       },
       "type": ["null", "array"]
+    },
+    "TaxReviewStatus": {
+      "type": ["null", "string"]
     }
   },
   "type": ["null", "object"]
